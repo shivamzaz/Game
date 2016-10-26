@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Game</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+       <h1> Hey Player!  </h1>
+       <% if player_signed_in? %>
+        <h1 style="background-color: #<%=current_player.color%>"> .Congo !! you got Color</h1>
+       		 <h1 style="background-color: #<%=current_player.color%>">. </h1>
+
+       <% end %>
+       <%= yield %>
+       <% if player_signed_in? %>
+       		<li><%=link_to("Log Out",  destroy_player_session_path, :method => :delete) %></li>
+       		<h1> Max Score is: <%=current_player.posts.count %> | Total Player is(including you): <%= Player.all.count %>  </h1>
+       		<h1 style="background-color: #<%=current_player.color%>"> Signed in as: <%=current_player.email%></h1>
+
+       <%else%>
+
+           <li><%=link_to "Sign Up", new_player_registration_path %> | <%=link_to "Sign In", new_player_session_path %></li>
+       <% end %>
+
+
+
+</body>
+</html>
