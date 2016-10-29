@@ -99,6 +99,7 @@ Quick Installation:
 			->  rake db:create
 			->  rake db:migrate
 			->  rails server
+			->  open localhost:3000
 
 
 
